@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/echarts/5.4.2/echarts.common.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <style>
+      #box,
+      #box1,
+      #box2 {
+        width: 700px;
+        height: 500px;
+        margin: 10px;
+        margin-left: 5px;
+        background-color: white;
+        border-radius: 5%;
+      }
+      button:hover {
+        background-color: red;
+        border: 1px solid red;
+      }
+    </style>
+    <link rel="stylesheet" href="1.css" />
+  </head>
+  <body>
+    <div class="box">
+      <div class="nuv">
+        <h1>待办事项</h1>
+        <ul>
+          <li class="noe2">
+            <h3>待发货</h3>
+            <span>单位（笔）</span>
+            <h1 style="color: #648cec">4</h1>
+          </li>
+          <li class="noe2">
+            <h3>待处理售后</h3>
+            <span>单位（笔）</span>
+            <h1 style="color: red">0</h1>
+          </li>
+          <li class="noe2">
+            <h3>待付款订单</h3>
+            <span>单位（笔）</span>
+            <h1 style="color: #68b763">113</h1>
+          </li>
+          <li class="noe2">
+            <h3>待补商品</h3>
+            <span>单位（个）</span>
+            <h1 style="color: #648cec">0</h1>
+          </li>
+          <li class="noe2">
+            <h3>待审核会员</h3>
+            <span>单位（个）</span>
+            <h1 style="color: red">0</h1>
+          </li>
+          <li class="noe2">
+            <h3>待审核佣金</h3>
+            <span>单位（元）</span>
+            <h1 style="color: #79c5b4">948.19</h1>
+          </li>
+        </ul>
+      </div>
+      <div class="border">
+        <div class="top">
+          <div class="lefns">
+            <div class="top1">
+              <h1>新增会员</h1>
+              <button
+                style="
+                  background-color: #648cec;
+                  border: 1px solid #648cec;
+                  margin-left: 150px;
+                "
+                onclick="box_btn1()"
+              >
+                今天
+              </button>
+              <button onclick="box_btn2()">昨天</button>
+              <button onclick="box_btn3()">近七日</button>
+              <button onclick="box_btn4()">近30日</button>
+            </div>
+            <div id="box"></div>
+          </div>
+          <div class="rights">
+            <div class="top1">
+              <h1>新增订单</h1>
+              <button
+                style="
+                  background-color: #648cec;
+                  border: 1px solid #648cec;
+                  margin-left: 200px;
+                  margin-left: 150px;
+                "
+                class="noe2"
+                onclick="box3_btn1()"
+              >
+                今天
+              </button>
+              <button class="noe2" onclick="box3_btn2()">昨天</button>
+              <button class="noe2" onclick="box3_btn3()">近七日</button>
+              <button class="noe2" onclick="box3_btn4()">近30日</button>
+            </div>
+            <div id="box1"></div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="top">
+          <h1>运营数据</h1>
+          <input type="date" name="" id="" value="2023-05-12" />
+          <input type="date" name="" id="" value="2023-05-12" />
+          <button
+            style="
+              background-color: #648cec;
+              border: 1px solid #648cec;
+              margin-left: 150px;
+            "
+            onclick="box2_btn1()"
+          >
+            今天
+          </button>
+          <button class="noe2" onclick="box2_btn2()">昨天</button>
+          <button class="noe2" onclick="box2_btn3()">近七日</button>
+          <button class="noe2" onclick="box2_btn4()">近30日</button>
+        </div>
+        <div class="noe">
+          <div class="left">
+            <div class="n1 noe2">
+              <h3>成交金额（元）</h3>
+              <h1>796</h1>
+              <span>较昨日</span>
+              <b style="color: red">
+                <img src="./1.png" alt="" />
+                30.6%</b
+              >
+            </div>
+            <div class="n1 noe2">
+              <h3>退款金额（元）</h3>
+              <h1>0</h1>
+              <span>较昨日</span>
+              <b style="color: red">
+                <img src="./1.png" alt="" />
+                100%</b
+              >
+            </div>
+            <div class="n1 noe2">
+              <h3>支付订单数（笔）</h3>
+              <h1>4</h1>
+              <span>较昨日</span>
+              <b style="color: red">
+                <img src="./1.png" alt="" />
+                100%</b
+              >
+            </div>
+            <div class="n1 noe2">
+              <h3>支付人数（人）</h3>
+              <h1>4</h1>
+              <span>较昨日</span>
+              <b style="color: red">
+                <img src="./1.png" alt="" />
+                0.5%</b
+              >
+            </div>
+            <div class="n1 noe2">
+              <h3>客单数（元）</h3>
+              <h1>199</h1>
+              <span>较昨日</span>
+              <b style="color: #a9dcd2">
+                <img src="./1.png" alt="" />
+                -34.6%</b
+              >
+            </div>
+            <div class="n1 noe2">
+              <h3>笔单价（元）</h3>
+              <h1>199</h1>
+              <span>较昨日</span>
+              <b style="color: #a9dcd2">
+                <img src="./2.png" alt="" />
+                -34.6%</b
+              >
+            </div>
+          </div>
+          <div class="right">
+            <div id="box2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    box3_btn1();
+    function box3_btn1() {
+      let chartDom = document.getElementById("box1");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {},
+        xAxis: {
+          type: "category",
+          data: ["00.00", "03.00", "06.00", "09.00", "12.00", "15.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [5, 0, 12, 60, 200, 40, 13],
+            type: "bar",
+            smooth: true,
+            itemStyle: {
+              // 修改样式
+              color: "#a9dcd2", // 修改颜色
+              barWidth: 5, // 修改宽度
+              barBorderRadius: 5, // 圆角
+            },
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function box3_btn2() {
+      let chartDom = document.getElementById("box1");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {},
+        xAxis: {
+          type: "category",
+          data: ["00.00", "03.00", "06.00", "09.00", "12.00", "15.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [10, 30, 40, 60, 2, 10, 10],
+            type: "bar",
+            smooth: true,
+            itemStyle: {
+              // 修改样式
+              color: "#a9dcd2", // 修改颜色
+              barWidth: 5, // 修改宽度
+              barBorderRadius: 5, // 圆角
+            },
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function box3_btn3() {
+      let chartDom = document.getElementById("box1");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {},
+        xAxis: {
+          type: "category",
+          data: ["00.00", "03.00", "06.00", "09.00", "12.00", "15.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [20, 16, 50, 12, 30, 17, 8],
+            type: "bar",
+            smooth: true,
+            itemStyle: {
+              // 修改样式
+              color: "#a9dcd2", // 修改颜色
+              barWidth: 5, // 修改宽度
+              barBorderRadius: 5, // 圆角
+            },
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function box3_btn4() {
+      let chartDom = document.getElementById("box1");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {},
+        xAxis: {
+          type: "category",
+          data: ["00.00", "03.00", "06.00", "09.00", "12.00", "15.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [51, 48, 10, 40, 20, 40, 5],
+            type: "bar",
+            smooth: true,
+            itemStyle: {
+              // 修改样式
+              color: "#a9dcd2", // 修改颜色
+              barWidth: 5, // 修改宽度
+              barBorderRadius: 5, // 圆角
+            },
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    box2_btn4();
+    function box2_btn1() {
+      let chartDom = document.getElementById("box2");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {},
+        xAxis: {
+          type: "category",
+          data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [5, 0, 12, 60, 200, 40, 13],
+            type: "line",
+            smooth: true,
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: "rgba(205,211,235,0.8)",
+                },
+                {
+                  offset: 1,
+                  color: "rgba(255,255,255,1)",
+                },
+              ]),
+            },
+          },
+          {},
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function box2_btn2() {
+      let chartDom = document.getElementById("box2");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {},
+        xAxis: {
+          type: "category",
+          data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [10, 50, 80, 60, 200, 0, 13],
+            type: "line",
+            smooth: true,
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: "rgba(205,211,235,0.8)",
+                },
+                {
+                  offset: 1,
+                  color: "rgba(255,255,255,1)",
+                },
+              ]),
+            },
+          },
+          {},
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function box2_btn3() {
+      let chartDom = document.getElementById("box2");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {},
+        xAxis: {
+          type: "category",
+          data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [30, 50, 12, 40, 80, 0, 30],
+            type: "line",
+            smooth: true,
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: "rgba(205,211,235,0.8)",
+                },
+                {
+                  offset: 1,
+                  color: "rgba(255,255,255,1)",
+                },
+              ]),
+            },
+          },
+          {},
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function box2_btn4() {
+      let chartDom = document.getElementById("box2");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {},
+        xAxis: {
+          type: "category",
+          data: ["00.00", "02.00", "04.00", "06.00", "08.00", "10.00", "12.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [0, 20, 80, 0, 2, 30, 0],
+            type: "line",
+            smooth: true,
+            areaStyle: {
+              color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                {
+                  offset: 0,
+                  color: "rgba(205,211,235,0.8)",
+                },
+                {
+                  offset: 1,
+                  color: "rgba(255,255,255,1)",
+                },
+              ]),
+            },
+          },
+          {},
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function box_btn1() {
+      let chartDom = document.getElementById("box");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: ["00.00", "03.00", "06.00", "09.00", "12.00", "15.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [35, 0, 18, 37, 8, 0],
+            type: "line",
+            smooth: true,
+            areaStyle: {
+              // 设置区域填充样式
+              color: "#71e7d0", // 填充颜色
+            },
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function box_btn2() {
+      let chartDom = document.getElementById("box");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: ["00.00", "03.00", "06.00", "09.00", "12.00", "15.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [0, 40, 2, 20, 5, 10],
+            type: "line",
+            smooth: true,
+            areaStyle: {
+              // 设置区域填充样式
+              color: "#71e7d0", // 填充颜色
+            },
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function box_btn3() {
+      let chartDom = document.getElementById("box");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {
+          data: ["PV", "UV"],
+        },
+        xAxis: {
+          type: "category",
+          data: ["00.00", "03.00", "06.00", "09.00", "12.00", "15.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [20, 38, 36, 10, 7, 2],
+            type: "line",
+            smooth: true,
+            areaStyle: {
+              // 设置区域填充样式
+              color: "#71e7d0", // 填充颜色
+            },
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    function box_btn4() {
+      let chartDom = document.getElementById("box");
+      let myChart = echarts.init(chartDom);
+      let option;
+      option = {
+        tooltip: {},
+        legend: {},
+        xAxis: {
+          type: "category",
+          data: ["00.00", "03.00", "06.00", "09.00", "12.00", "15.00"],
+        },
+        yAxis: {
+          type: "value",
+        },
+        series: [
+          {
+            data: [0, 28, 16, 40, 17, 2],
+            type: "line",
+            smooth: true,
+            areaStyle: {
+              // 设置区域填充样式
+              color: "#71e7d0", // 填充颜色
+            },
+          },
+        ],
+      };
+      myChart.setOption(option);
+    }
+    box_btn4();
+  </script>
+</html>
