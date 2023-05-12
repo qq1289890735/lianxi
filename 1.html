@@ -1,13 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>jQuery Promises and async/await Animation Example</title>
+    <style>
+      #box1,
+      #box2 {
+        position: absolute;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+
+      #box2 {
+        right: 0;
+        background-color: blue;
+      }
+    </style>
   </head>
   <body>
-    666撒撒旦阿萨撒旦发撒sass是是 git remote add 1.html
-    https://github.com/qq1289890735/lianxi.gitsss
+    <div id="container">
+      <div id="box1"></div>
+      <div id="box2"></div>
+      =
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      async function animate() {
+        const box1 = $("#box1");
+        const box2 = $("#box2");
+        const box3 = $("#box3");
+        await box1.animate({ left: "500px" }, 3000).promise();
+        await box2.animate({ right: "500px" }, 3000).promise();
+        await box1.animate({ width: "0", height: "0" }, 2000).promise();
+        await box1.animate({ width: "500px", height: "500px" }, 2000).promise();
+      }
+      animate();
+    </script>
   </body>
 </html>
